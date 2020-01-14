@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Logo from "../Images/Logo.png";
 import Blog from "../Images/Blog_Icon.png";
+import Kakao from "../Images/Kakao_Icon.png";
 import Tel from "../Images/Tel_Icon.png";
 
 export default () => {
@@ -10,6 +11,9 @@ export default () => {
     <Wrapper>
       <LocalImage src={Logo} />
       <FloatBox>
+        <a href="https://pf.kakao.com/_rrBhxb">
+          <SmallLocalImage src={Kakao} />
+        </a>
         <a href="https://blog.naver.com/gongteo181">
           <SmallLocalImage src={Blog} />
         </a>

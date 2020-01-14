@@ -24,7 +24,7 @@ export default () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  background: #7EDF78;
+  background: #7edf78;
 `;
 
 const BoxWrapper = styled.div`
@@ -48,9 +48,9 @@ const Box = styled.div`
 
 const YellowText = styled.span`
   font-weight: 300;
-  letter-spacing: 1.0px;
+  letter-spacing: 1px;
   word-spacing: 4px;
-  font-size: 32px;
+  font-size: 42px;
   color: #fcff00;
   @media only screen and (max-width: 600px) {
     font-size: 25px;
@@ -60,14 +60,13 @@ const YellowText = styled.span`
 const YellowBoldText = styled(YellowText)`
   margin-top: 10px;
   font-weight: bold;
-  
 `;
 
 const GreenText = styled.span`
   font-weight: 400;
   letter-spacing: -0.5px;
-  font-size: 28px;
-  color: #1B9C04;
+  font-size: 40px;
+  color: #1b9c04;
   @media only screen and (max-width: 600px) {
     font-size: 21px;
   }
@@ -75,8 +74,8 @@ const GreenText = styled.span`
 
 const GreenBoldText = styled(YellowBoldText)`
   margin-top: 0px;
-  letter-spacing: 3.0px;
-  color: #1B9C04;
+  letter-spacing: 3px;
+  color: #1b9c04;
 `;
 
 const WhiteText = styled.span`
@@ -94,5 +93,5 @@ const WhiteText = styled.span`
 const WhiteBoldText = styled(WhiteText)`
   padding-top: 40px;
   font-weight: bold;
-  color: #EBF9E9;
+  color: #ebf9e9;
 `;

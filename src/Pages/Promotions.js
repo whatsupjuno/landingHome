@@ -1,21 +1,53 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import SwipeableViews from "react-swipeable-views";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { makeStyles } from "@material-ui/core/styles";
+
 import CardImage1 from "../Images/Promotion1_rl.jpg";
 
+const useStyles = makeStyles(() => ({
+  root: {
+    width: "100%",
+    height: "15px",
+    backgroundColor: "gray"
+  }
+}));
+
 export default () => {
+  const [swipeIndex, setSwipeIndex] = useState(0);
+  const classes = useStyles();
+
+  const imageArray = [CardImage1, CardImage1, CardImage1, CardImage1];
+
+  const hanldeSwipeIndex = swipeIndex => {
+    setSwipeIndex(swipeIndex);
+    console.log(swipeIndex);
+  };
+
   return (
     <Wrapper>
       <Layout>
         <TextBoxBold>학부모 설명회</TextBoxBold>
         <TextBox>공터영어 화곡센터</TextBox>
-        <Box>
-          <LocalImage src={CardImage1} />
-        </Box>
-        <LineBox>
-          <GreenBox />
-          <GrayBox />
-        </LineBox>
+        <SwipeableViews
+          index={swipeIndex}
+          onChangeIndex={hanldeSwipeIndex}
+          enableMouseEvents
+        >
+          {imageArray.map(image => (
+            <Box>
+              <LocalImage src={image} />
+            </Box>
+          ))}
+        </SwipeableViews>
+        <LinearProgress
+          className={classes.root}
+          variant="determinate"
+          color="primary"
+          value={(swipeIndex + 1) * (100 / imageArray.length)}
+        />
       </Layout>
     </Wrapper>
   );
@@ -52,23 +84,6 @@ const LocalImage = styled.img`
   width: 100%;
 `;
 
-const LineBox = styled.div`
-  display: flex;
-  width: 100%;
-  height: 5px;
-  margin: 20px 0;
-`;
-const GreenBox = styled.div`
-  width: 30%;
-  height: 100%;
-  background: #5eb310;
-`;
-const GrayBox = styled.div`
-  width: 70%;
-  height: 100%;
-  background: #ededed;
-`;
-
 const TextBox = styled.span`
   color: #2a2a2a;
   font-size: 20px;
@@ -81,25 +96,4 @@ const TextBox = styled.span`
 const TextBoxBold = styled(TextBox)`
   font-weight: bold;
   font-size: 30px;
-`;
-
-const TextBoxGreen = styled.p`
-  color: #5eb411;
-  font-weight: bold;
-`;
-
-const Button = styled.button`
-  border: none;
-  width: 15px;
-  height: 15px;
-`;
-
-const RightButton = styled(Button)`
-  background-color: blue;
-  right: 50px;
-`;
-
-const LeftButton = styled(Button)`
-  background-color: red;
-  left: 50px;
 `;

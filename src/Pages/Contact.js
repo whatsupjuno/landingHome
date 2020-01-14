@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 export default () => {
+  useEffect(() => {
+    window.emailjs.init("user_UviqpfsTGLvIIagaQ2ZBB");
+
+    window.onload = function() {
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function(event) {
+          event.preventDefault();
+          window.emailjs.sendForm("contact_service", "template_U0PMAPMw", this);
+        });
+    };
+  }, []);
+
   return (
     <Wrapper>
       <Layout>
@@ -12,20 +25,21 @@ export default () => {
           알려드립니다!
         </Message>
         <Message>상담받을 성함과 연락처를 남겨주시면 연락드립니다.</Message>
-        <form
-          action="MAILTO:whatsupjuno@gmail.com"
-          method="post"
-          encType="text/plain"
-        >
+        <form id="contact-form">
           <InputBoxLayout>
-            <InputBox type="text" placeholder="성함"></InputBox>
-            <InputBox type="text" placeholder="연락처"></InputBox>
+            <InputBox type="text" name="from_name" placeholder="성함" />
+            <InputBox type="email" name="user_email" placeholder="이메일" />
+            <InputBox type="phone" name="contact_number" placeholder="연락처" />
           </InputBoxLayout>
-          <TextAreaBox row="10" placeholder="내용"></TextAreaBox>
+          <TextAreaBox
+            name="message_html"
+            row="10"
+            placeholder="내용"
+          ></TextAreaBox>
+          <ButtonLayout>
+            <SendButton type="submit" value="상담 신청하기" />
+          </ButtonLayout>
         </form>
-        <ButtonLayout>
-          <Button>상담 신청하기</Button>
-        </ButtonLayout>
       </Layout>
     </Wrapper>
   );
@@ -71,7 +85,7 @@ const Message = styled.p`
 
 const InputBoxLayout = styled.div`
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 30% 40% 28.5%;
   grid-gap: 5px;
   margin-top: 20px;
 `;
@@ -101,13 +115,14 @@ const ButtonLayout = styled.div`
   }
 `;
 
-const Button = styled.span`
+const SendButton = styled.input`
   cursor: pointer;
   font-size: 30px;
   width: 300px;
   padding: 25px 50px;
   background: #5db310;
   border-radius: 50px;
+  border: none;
   color: white;
   @media only screen and (max-width: 720px) {
     font-size: 25px;
