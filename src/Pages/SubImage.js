@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import BG from "../Images/Introduction.png";
+
 export default () => {
   return (
     <Wrapper>
@@ -24,7 +26,7 @@ export default () => {
 
 const Wrapper = styled.div`
   width: 100%;
-  background: #7edf78;
+  background-image: url("${BG}");
 `;
 
 const BoxWrapper = styled.div`

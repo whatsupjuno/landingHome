@@ -8,9 +8,15 @@ export default () => {
     window.onload = function() {
       document
         .getElementById("contact-form")
-        .addEventListener("submit", function(event) {
+        .addEventListener("submit", async function(event) {
           event.preventDefault();
-          window.emailjs.sendForm("contact_service", "template_U0PMAPMw", this);
+          const sending = await window.emailjs.sendForm(
+            "contact_service",
+            "template_U0PMAPMw",
+            this
+          );
+          alert("상담 신청이 완료되었습니다.");
+          this.reset();
         });
     };
   }, []);
