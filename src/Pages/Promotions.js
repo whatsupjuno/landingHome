@@ -3,21 +3,11 @@ import styled from "styled-components";
 
 import SwipeableViews from "react-swipeable-views";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import { makeStyles } from "@material-ui/core/styles";
 
 import CardImage1 from "../Images/Promotion1_rl.jpg";
 
-const useStyles = makeStyles(() => ({
-  root: {
-    width: "100%",
-    height: "15px",
-    backgroundColor: "gray"
-  }
-}));
-
 export default () => {
   const [swipeIndex, setSwipeIndex] = useState(0);
-  const classes = useStyles();
 
   const imageArray = [CardImage1, CardImage1, CardImage1, CardImage1];
 
@@ -42,10 +32,8 @@ export default () => {
             </Box>
           ))}
         </SwipeableViews>
-        <LinearProgress
-          className={classes.root}
+        <StyledProgress
           variant="determinate"
-          color="primary"
           value={(swipeIndex + 1) * (100 / imageArray.length)}
         />
       </Layout>
@@ -80,9 +68,17 @@ const Box = styled.div`
   width: 100%;
 `;
 
-const LocalImage = styled.img`
-  width: 100%;
-`;
+const LocalImage = styled.img({
+  width: "100%"
+});
+
+const StyledProgress = styled(LinearProgress)({
+  height: "10px !important",
+  backgroundColor: "gray !important",
+  "& > div": {
+    backgroundColor: "#7EDF78 !important"
+  }
+});
 
 const TextBox = styled.span`
   color: #2a2a2a;
