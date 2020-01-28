@@ -28,9 +28,10 @@ export default () => {
 const Wrapper = styled.div`
   height: auto;
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   padding: 10px;
+  background: white;
   display: flex;
   justify-content: space-between;
   align-items: center;

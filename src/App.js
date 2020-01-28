@@ -1,4 +1,6 @@
 import React from "react";
+import ReactPlayer from "react-player";
+import styled from "styled-components";
 
 import "./App.css";
 
@@ -17,10 +19,28 @@ import Contact from "./Pages/Contact";
 import Information from "./Pages/Information";
 import Location from "./Pages/Location";
 
+const Box = styled.div({
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
+});
+
 function App() {
   return (
     <div>
       <Header />
+      <Box>
+        <ReactPlayer
+          width="100%"
+          height="auto"
+          url="https://idoeduvideo.s3.ap-northeast-2.amazonaws.com/movie.mp4"
+          playing
+          controls
+          muted
+          style={{ marginBottom: "10px", marginTop: "90px" }}
+        />
+      </Box>
       <BrandImage />
       <SubImage />
       <Introduction />
